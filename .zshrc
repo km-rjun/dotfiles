@@ -71,6 +71,6 @@ alias vpn='sudo systemctl start warp-svc.service && echo "VPN is Connected"'
 alias vpn-off='sudo systemctl stop warp-svc.service && echo "VPN Disconnected"'
 alias gpt='function_name() { tgpt "$*"; }; function_name'
 alias ai='function_name() { tgpt "$*"; }; function_name'
-alias dotfiles='git --git-dir=$HOME/Documents/dotfiles/ --work-tree=$HOME/'
+alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME/'
 
 neofetch
