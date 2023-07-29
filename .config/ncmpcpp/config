@@ -1,0 +1,29 @@
+ncmpcpp_directory = ~/.config/ncmpcpp
+mpd_music_dir = ~/Music
+
+mpd_host = localhost
+mpd_port = 6600
+
+colors_enabled = "yes"
+header_window_color = "cyan"
+volume_color = "green"
+progressbar_color = "white"
+progressbar_elapsed_color = "green"
+statusbar_color = "white"
+
+progressbar_look = "="
+playlist_editor_display_mode ="columns"
+browser_display_mode = "columns"
+search_engine_display_mode = "columns"
+playlist_display_mode = "columns"
+
+user_interface = "alternative"
+alternative_header_first_line_format = " $0$aqqu$/a {$6%a$9 - }{$3%t$9}|{$3%f$9} $0$atqq$/a$9 "
+alternative_header_second_line_format = " {{$4%b$9}}|{$4%D$9} "
+song_columns_list_format = "(5)[red]{l} (30)[green]{t} (30)[blue]{a} (30)[magenta]{b}"
+now_playing_suffix = " $/b$9"
+
+visualizer_fifo_path = /tmp/mpd.fifo
+
+visualizer_in_stereo = yes
+visualizer_type = spectrum
