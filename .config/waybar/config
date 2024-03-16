@@ -1,0 +1,100 @@
+{
+    "layer": "top", // Waybar at top layer
+    "passthrough": false,
+    "position": "top", // Waybar at the bottom of your screen
+    "height": 36, // Waybar height
+    // "width": 1366, // Waybar width
+    // Choose the order of the modules
+    "modules-left": ["hyprland/workspaces", "custom/media"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["network", "battery", "backlight", "pulseaudio", "custom/power_profile", "clock", "custom/powermenu"],
+
+     "hyprland/window": {
+        "max-length": 50,
+     },
+
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": false,
+        "on-click": "activate",
+        //"format": "{icon}",
+        "persistent_workspaces": {
+        }
+    },
+
+    "clock": {
+        "format": "{:%a %d %b | %R}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 20,
+            "critical": 15
+        },
+        "format":"{icon}  {capacity}%",
+        "format-charging": "<span color=\"#f3f470\"></span> {capacity}%",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        // "interface": "wlp2s0", // (Optional) To force the use of this interface
+        "format-wifi": " ",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)  ",
+        "format-ethernet": " ",
+        "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-disconnected": "Disconnected ⚠",
+        "on-click": "alacritty -e nmtui"
+    },
+
+    "pulseaudio": {
+        "scroll-step": 5,
+        "format": "<span color=\"#7BACEF\">{icon}</span> {volume}%",
+        "format-bluetooth": "<span color=\"#7BACEF\">{icon}</span> {volume}%",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "tooltip-format": "Volume: {volume}%",
+        "format-muted": "",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "default": ["", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "backlight": {
+    "device": "intel_backlight",
+    "format": "<span color=\"#EFC17B\">{icon}</span> {percent}%",
+    "tooltip-format": "Brightness: {percent}%",
+    "format-icons": ["󰃞", "󰃟", "󰃠"],
+    "on-scroll-up": "brightnessctl +5%",
+    "on-scroll-down": "brightnessctl 5%-"
+    },
+
+    "custom/powermenu": {
+        "format":"  ",
+        "on-click": "~/.config/wofi/powermenu.sh",
+        "tooltip-format": "Power off"
+    },
+
+    "custom/power_profile": {
+    //shows the current power profile and switches to next on click
+    "exec": "~/.config/waybar/scripts/power_profile",
+    "return-type": "json",
+    "interval": 20,
+    "format": "{}",
+    "on-click": "~/.config/waybar/scripts/power_profile next",
+    "signal": 8
+    },
+
+    "custom/media": {
+        "return-type": "json",
+        "exec": "~/.config/waybar/scripts/media.sh",
+        "escape": true
+        },
+    },
+}
