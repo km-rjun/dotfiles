@@ -1,2 +1,3 @@
+~/dotfiles/hypr/.config/hypr/hyprpaper.conf
 nvim/.config/nvim/plugin/packer_compiled.lua
 tmux/.config/tmux/plugins/*
