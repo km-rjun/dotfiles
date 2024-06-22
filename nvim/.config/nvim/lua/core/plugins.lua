@@ -21,7 +21,9 @@ local plugins = {
     'windwp/nvim-autopairs',
 	'nvim-treesitter/nvim-treesitter',
 	'nvim-lualine/lualine.nvim',
-	"catppuccin/nvim", as = "catppuccin",
+	'catppuccin/nvim', as = 'catppuccin',
+    'akinsho/bufferline.nvim',
+    'lewis6991/gitsigns.nvim',
 
     -- LSP support
     'neovim/nvim-lspconfig',

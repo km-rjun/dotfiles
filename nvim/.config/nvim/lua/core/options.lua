@@ -13,4 +13,4 @@ vim.opt.autoindent = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.scrolloff = 8
-
+vim.api.nvim_set_hl(0, 'LineNr', { fg='white' })

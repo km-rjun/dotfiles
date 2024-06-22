@@ -6,5 +6,10 @@ require("catppuccin").setup({
         percentage = 0.15,
 },
 })
-
 vim.cmd.colorscheme "catppuccin"
+function LineNumberColors()
+    vim.api.nvim_set_hl(0, 'LineNrAbove', { fg='gray', bold=false })
+    vim.api.nvim_set_hl(0, 'LineNr', { fg='white', bold=true })
+    vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='gray', bold=false })
+end
+LineNumberColors()

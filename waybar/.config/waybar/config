@@ -1,13 +1,11 @@
 {
-    "layer": "top", // Waybar at top layer
+    "layer": "top", 
     "passthrough": false,
-    "position": "top", // Waybar at the bottom of your screen
-    "height": 36, // Waybar height
-    // "width": 1366, // Waybar width
-    // Choose the order of the modules
+    "position": "top", 
+    "height": 36, 
     "modules-left": ["hyprland/workspaces", "custom/media"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["network", "battery", "backlight", "pulseaudio", "custom/power_profile", "clock", "custom/powermenu"],
+    "modules-right": ["custom/power_profile", "network", "battery", "pulseaudio", "clock", "custom/powermenu"],
 
      "hyprland/window": {
         "max-length": 50,
@@ -33,7 +31,7 @@
             "warning": 20,
             "critical": 15
         },
-        "format":"{icon}  {capacity}%",
+        "format":"{icon} {capacity}%",
         "format-charging": "<span color=\"#f3f470\"></span> {capacity}%",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
