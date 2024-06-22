@@ -75,8 +75,8 @@
 
     "custom/powermenu": {
         "format":"  ",
-        "on-click": "~/.config/wofi/powermenu.sh",
-        "tooltip-format": "Power off"
+        "on-click": "wlogout",
+        "tooltip-format": "Power Menu"
     },
 
     "custom/power_profile": {
