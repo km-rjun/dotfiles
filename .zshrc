@@ -9,28 +9,22 @@ bindkey  "^[[H"   beginning-of-line
 bindkey  "^[[F"   end-of-line
 bindkey  "^[[3~"  delete-char
 
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/rjun/.zshrc'
-
+# zstyle :compinstall filename '/home/rjun/.zshrc'
 autoload -Uz compinit
+setopt PROMPT_SUBST
 compinit
-# End of lines added by compinstall
-# Lines configured by zsh-newuser-install
+zstyle ':completion:*' menu select
+
+source <(fzf --zsh)
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
+setopt appendhistory
 bindkey -e
 # End of lines configured by zsh-newuser-install
-source /home/rjun/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f /home/rjun/.config/zsh/powerlevel10k/p10k.zsh ]] || source /home/rjun/.config/zsh/powerlevel10k/p10k.zsh
-
-
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
 source /home/rjun/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-
+source /home/rjun/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 ex ()
 {
@@ -55,8 +49,6 @@ ex ()
   fi
 }
 
-
-
 # ALIASES #
 
 alias ls='ls --color=auto'
@@ -71,6 +63,10 @@ alias vpn='sudo systemctl start warp-svc.service && echo "VPN is Connected"'
 alias vpn-off='sudo systemctl stop warp-svc.service && echo "VPN Disconnected"'
 alias gpt='function_name() { tgpt "$*"; }; function_name'
 alias ai='function_name() { tgpt "$*"; }; function_name'
-alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME/'
+alias dotfiles='git --git-dir=$HOME/dotfiles/ --work-tree=$HOME/'
+alias viclean='rm -f /home/rjun/.local/state/nvim/swap/*'
 
-neofetch
+[[ ! -f ~/.config/zsh/p10k.zsh ]] || source ~/.config/zsh/p10k.zsh
+source ~/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme
+
+export PATH="$PATH:$HOME/.config/:$HOME/.config/nvim"
