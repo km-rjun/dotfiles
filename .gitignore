@@ -1,1 +1,2 @@
-.config/tmux/plugins
+nvim/.config/nvim/plugin/packer_compiled.lua
+tmux/.config/tmux/plugins/*
