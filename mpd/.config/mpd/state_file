@@ -1,5 +1,5 @@
 sw_volume: 100
-audio_device_state:1:Pipewire Media Session
+audio_device_state:1:pulse audio
 audio_device_state:1:Visualizer feed
 state: pause
 current: 3
