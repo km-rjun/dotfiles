@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 bindkey  "^[[H"   beginning-of-line
 bindkey  "^[[F"   end-of-line
 bindkey  "^[[3~"  delete-char
@@ -14,17 +7,12 @@ autoload -Uz compinit
 setopt PROMPT_SUBST
 compinit
 zstyle ':completion:*' menu select
-
 source <(fzf --zsh)
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
 bindkey -e
-# End of lines configured by zsh-newuser-install
-
-source /home/rjun/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /home/rjun/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 ex ()
 {
@@ -50,7 +38,6 @@ ex ()
 }
 
 # ALIASES #
-
 alias ls='ls --color=auto'
 alias grep='grep --color'
 alias rm='rm -i'
@@ -66,7 +53,4 @@ alias ai='function_name() { tgpt "$*"; }; function_name'
 alias dotfiles='git --git-dir=$HOME/dotfiles/ --work-tree=$HOME/'
 alias viclean='rm -f /home/rjun/.local/state/nvim/swap/*'
 
-[[ ! -f ~/.config/zsh/p10k.zsh ]] || source ~/.config/zsh/p10k.zsh
-source ~/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme
-
-export PATH="$PATH:$HOME/.config/:$HOME/.config/nvim"
+eval "$(starship init zsh)"
