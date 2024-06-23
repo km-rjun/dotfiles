@@ -1,23 +1,25 @@
 #!/bin/bash
 
 get_pwr() {
-    PWR=$(asusctl profile -p | sed s:'Active profile is'::)
+    # PWR=$(asusctl profile -p | sed s:'Active profile is'::)
+    PWR=$(asusctl profile -p | sed -n 's/Active profile is \(.*\)/\1/p')
 }
 
 get_pwr
 
-if [ $PWR == Balanced ]; then
+if [ "$PWR" == Balanced ]; then
     text=" 󰾅 "
     tooltip="Balanced"
-elif [ $PWR == Performance ]; then
+elif [ "$PWR" == Performance ]; then
     text=" 󰓅 "
     tooltip="Performance"
-elif [ $PWR == Quiet ]; then
+elif [ "$PWR" == Quiet ]; then
     text=" 󰾆 "
     tooltip="Quiet"
 fi
 
-echo '{"text": "'$text'", "tooltip": "'$tooltip'"}'
+# echo '{"text": "'$text'", "tooltip": "'$tooltip'"}'
+echo "{\"text\": \"$text\", \"tooltip\": \"$tooltip\"}"
 
 if [[ "$1" == "next" ]]; then
     asusctl profile -n; pkill -SIGRTMIN+8 waybar

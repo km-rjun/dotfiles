@@ -25,6 +25,7 @@ window#waybar {
     font-size: 14px;
     color: #000000;
     opacity: 0.8;
+    margin: 0 5px;
 }
 
 #workspaces button {

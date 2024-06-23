@@ -21,8 +21,8 @@
     },
 
     "clock": {
-        "format": "{:%a %d %b | %R}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        "format": "{:%R}",
+        "tooltip-format": "<big>{:%D %B}</big>\n<tt>{calendar}</tt>"
     },
 
     "battery": {
