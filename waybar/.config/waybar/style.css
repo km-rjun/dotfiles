@@ -1,9 +1,11 @@
 * {
     border: none;
-    border-radius: 0;
+    border-radius: 14;
     font-family: "monospace";
     font-size: 17px;
     min-height: 0;
+    margin-right: 3;
+    margin-left: 3;
 }
 tooltip {
   background: rgba(43, 48, 59, 0.5);
@@ -34,9 +36,9 @@ window#waybar {
 }
 
 #workspaces button.active {
-    color: #FFFFFF;
-    background: #666666;
-    border-radius: 20px;
+    color: #414a4c;
+    background: rgba(173,216,230,0.9);
+    border-radius: 12px;
 }
 
 #workspaces button:hover {
@@ -51,7 +53,7 @@ window#waybar {
 }
 
 #clock, #battery, #network, #backlight, #pulseaudio {
-    padding: 0 8px;
+    padding: 0 5px;
 }
 
 #clock {

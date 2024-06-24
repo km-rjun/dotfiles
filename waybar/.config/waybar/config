@@ -3,6 +3,8 @@
     "passthrough": false,
     "position": "top", 
     "height": 36, 
+    "margin": "5 5 0 5",
+    "radius": 5,
     "modules-left": ["hyprland/workspaces", "custom/media"],
     "modules-center": ["hyprland/window"],
     "modules-right": ["custom/power_profile", "network", "battery", "pulseaudio", "clock", "custom/powermenu"],
@@ -74,7 +76,7 @@
     },
 
     "custom/powermenu": {
-        "format":"  ",
+        "format":" ",
         "on-click": "wlogout",
         "tooltip-format": "Power Menu"
     },
