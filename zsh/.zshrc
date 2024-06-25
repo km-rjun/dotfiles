@@ -7,12 +7,15 @@ autoload -Uz compinit
 setopt PROMPT_SUBST
 compinit
 zstyle ':completion:*' menu select
-source <(fzf --zsh)
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
 bindkey -e
+
+source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+source <(fzf --zsh)
 
 ex ()
 {
