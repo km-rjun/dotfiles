@@ -52,12 +52,13 @@ window#waybar {
     border-bottom: 3px solid white;
 }
 
-#clock, #battery, #network, #backlight, #pulseaudio {
+#battery, #network, #backlight, #pulseaudio {
     padding: 0 5px;
 }
 
 #clock {
-    color: #E7EF7B;
+    color: #feff79;
+    padding: 0 9px;
 }
 
 #battery {
@@ -108,11 +109,11 @@ window#waybar {
 }
 
 #custom-power_profile{
-    color: #bd4842;
+    color: #eb2d3a;
 }
 
 #custom-powermenu{
-    color: #FFFFFF;
+    color: #ffffff;
     margin: 0px 4px;
 }
 

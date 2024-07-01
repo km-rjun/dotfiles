@@ -1,6 +1,5 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
-local kind_icons
 require("luasnip.loaders.from_vscode").lazy_load()
 
 local check_backspace = function()

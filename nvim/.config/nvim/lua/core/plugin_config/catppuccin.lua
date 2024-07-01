@@ -1,10 +1,10 @@
 require("catppuccin").setup({
-	transparent_background = true,
-	 dim_inactive = {
-		 enabled = true, -- dims the background color of inactive window
+    transparent_background = true,
+    dim_inactive = {
+        enabled = true, -- dims the background color of inactive window
         shade = "dark",
-        percentage = 0.15,
-},
+        percentage = 2,
+    },
 })
 vim.cmd.colorscheme "catppuccin"
 function LineNumberColors()
