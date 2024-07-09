@@ -46,6 +46,8 @@ local plugins = {
         lazy = false,
     },
 
+    'jiaoshijie/undotree',
+
     {
         'numToStr/Comment.nvim',
         opts = {

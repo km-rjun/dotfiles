@@ -47,6 +47,6 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias vim='nvim'
-alias ed='nvim $(fzf)'
+alias ed='nvim $(fzf --preview="cat {}")'
 
 eval "$(starship init zsh)"

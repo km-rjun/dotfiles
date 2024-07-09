@@ -7,7 +7,7 @@ background = "#010010"
 foreground = "#DBCEF1"
 
 [font]
-size = 14
+size = 13
 
 [font.bold]
 family = "JetBrainsMono Nerd Font"

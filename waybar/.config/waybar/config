@@ -2,7 +2,7 @@
     "layer": "top", 
     "passthrough": false,
     "position": "top", 
-    "height": 36, 
+    "height": 32, 
     "margin": "5 5 0 5",
     "radius": 5,
     "modules-left": ["hyprland/workspaces", "custom/media"],
