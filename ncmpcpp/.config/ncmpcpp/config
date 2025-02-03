@@ -23,7 +23,6 @@ alternative_header_second_line_format = " {{$4%b$9}}|{$4%D$9} "
 song_columns_list_format = "(5)[red]{l} (30)[green]{t} (30)[blue]{a} (30)[magenta]{b}"
 now_playing_suffix = " $/b$9"
 
-visualizer_fifo_path = /tmp/mpd.fifo
 
 visualizer_in_stereo = yes
 visualizer_type = spectrum

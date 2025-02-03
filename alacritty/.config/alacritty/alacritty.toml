@@ -36,7 +36,7 @@ history = 10000
 [selection]
 save_to_clipboard = false
 
-[shell]
+[terminal.shell]
 program = "/usr/bin/zsh"
 
 [window]
@@ -49,6 +49,8 @@ instance = "Alacritty"
 [window.padding]
 x = 5
 y = 5
+
+[terminal]
 
 # [env]
 # term = "xterm-256color"
