@@ -5,4 +5,4 @@ require("nvim-tree").setup({
         adaptive_size = true
     },
 })
-vim.keymap.set('n', '<A-Space>', ':NvimTreeFindFileToggle<CR>')
+vim.keymap.set('n', '<leader>tr', ':NvimTreeFindFileToggle<CR>')
