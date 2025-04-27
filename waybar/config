@@ -7,7 +7,7 @@
     "radius": 5,
     "modules-left": ["hyprland/workspaces", "custom/media"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["network", "bluetooth", "custom/power_profile",  "battery", "pulseaudio", "clock", "custom/powermenu"],
+    "modules-right": ["custom/wireguard", "network", "bluetooth", "custom/power_profile",  "battery", "pulseaudio", "clock", "custom/powermenu"],
 
      "hyprland/window": {
         "max-length": 50,
@@ -98,5 +98,13 @@
     "on-click": "~/.config/waybar/scripts/power_profile next",
     "signal": 8
         },
+    "custom/wireguard": {
+    "exec": "~/.config/waybar/scripts/wireguard_status.sh",
+    "interval": 3,
+    "on-click": "~/.config/waybar/scripts/wireguard_toggle.sh",
+    "return-type": "json",
+    "tooltip": false,
+        },
+
     },
 }

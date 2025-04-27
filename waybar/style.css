@@ -126,6 +126,21 @@ window#waybar {
 #pulseaudio{
 }
 
+#custom-wireguard {
+    font-family: "Nerd Font"; 
+    font-size: 14px;
+    padding: 0 10px;
+}
+
+#custom-wireguard.connected {
+    color: red;
+}
+
+#custom-wireguard.disconnected {
+    color: grey;
+}
+
+
 #custom-power_profile{
     color: #eb2d3a;
 }
