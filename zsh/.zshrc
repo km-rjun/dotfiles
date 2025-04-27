@@ -1,6 +1,6 @@
-bindkey  "^[[H"   beginning-of-line
-bindkey  "^[[F"   end-of-line
-bindkey  "^[[3~"  delete-char
+# bindkey  "^[[H"   beginning-of-line
+# bindkey  "^[[F"   end-of-line
+# bindkey  "^[[3~"  delete-char
 
 # zstyle :compinstall filename '/home/rjun/.zshrc'
 autoload -Uz compinit
@@ -13,8 +13,6 @@ SAVEHIST=10000
 setopt appendhistory
 bindkey -e
 
-source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
-source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 source <(fzf --zsh)
 
 ex ()
@@ -40,6 +38,27 @@ ex ()
   fi
 }
 
+# Check and install zsh-autosuggestions if not already installed
+if [ ! -f ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh ]; then
+  echo "zsh-autosuggestions not found, installing..."
+  git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.config/zsh/zsh-autosuggestions
+fi
+
+# Check and install zsh-syntax-highlighting if not already installed
+if [ ! -f ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh ]; then
+  echo "zsh-syntax-highlighting not found, installing..."
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.config/zsh/zsh-syntax-highlighting
+fi
+
+# Source the plugins only if the files exist
+if [ -f ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh ]; then
+  source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+fi
+
+if [ -f ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh ]; then
+  source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+fi
+
 # ALIASES #
 alias ls='ls --color=auto'
 alias grep='grep --color'
@@ -49,5 +68,4 @@ alias mv='mv -i'
 alias vim='nvim'
 alias ed='nvim $(fzf --preview="cat {}")'
 alias j="cd \$(dirs -l -p | sed 's#~#$HOME#g' | fzf --height 40% --reverse --preview 'tree -C {} | head -200')"
-
 eval "$(starship init zsh)"
