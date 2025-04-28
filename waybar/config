@@ -5,9 +5,9 @@
     "height": 32, 
     "margin": "5 5 0 5",
     "radius": 5,
-    "modules-left": ["hyprland/workspaces", "custom/media"],
+    "modules-left": ["hyprland/workspaces", "custom/wireguard"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["custom/wireguard", "network", "bluetooth", "custom/power_profile",  "battery", "pulseaudio", "clock", "custom/powermenu"],
+    "modules-right": ["network", "bluetooth", "custom/power_profile",  "battery", "backlight", "pulseaudio", "clock", "custom/powermenu"],
 
      "hyprland/window": {
         "max-length": 50,
@@ -74,6 +74,7 @@
         },
         "on-click": "pavucontrol"
     },
+
     "backlight": {
     "device": "intel_backlight",
     "format": "<span color=\"#EFC17B\">{icon}</span> {percent}%",
