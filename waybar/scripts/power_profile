@@ -8,13 +8,13 @@ get_pwr() {
 get_pwr
 
 if [ "$PWR" == Balanced ]; then
-    text=" 󰾅 "
+    text="󰾅 "
     tooltip="Balanced"
 elif [ "$PWR" == Performance ]; then
-    text=" 󰓅 "
+    text="󰓅 "
     tooltip="Performance"
 elif [ "$PWR" == Quiet ]; then
-    text=" 󰾆 "
+    text="󰾆 "
     tooltip="Quiet"
 fi
 

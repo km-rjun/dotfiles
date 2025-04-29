@@ -52,14 +52,13 @@ window#waybar {
     border-bottom: 3px solid white;
 }
 
-#battery, #network, #backlight, #pulseaudio {
+#battery, #network, #backlight, #pulseaudio, #bluetooth, #custom-power_profile {
     padding: 0 5px;
 }
 
 /* Default Bluetooth icon color (off state) */
 #bluetooth {
     color: #6886C5;
-    margin: 6 0px;
     transition: color 0.3s ease;
 }
 

@@ -23,7 +23,8 @@
     },
 
     "clock": {
-        "format": "{:%a %d %b  %R}",
+        "format": "{:%R}",
+        "format-alt": "{:%a %d %b  %R}",
         "tooltip-format": "<big>{:%D %B}</big>\n<tt>{calendar}</tt>"
     },
 
@@ -99,6 +100,7 @@
     "on-click": "~/.config/waybar/scripts/power_profile next",
     "signal": 8
         },
+
     "custom/wireguard": {
     "exec": "~/.config/waybar/scripts/wireguard_status.sh",
     "interval": 3,
