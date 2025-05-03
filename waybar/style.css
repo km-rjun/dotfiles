@@ -132,7 +132,7 @@ window#waybar {
 }
 
 #custom-wireguard.connected {
-    color: red;
+    color: #BF3131;
 }
 
 #custom-wireguard.disconnected {
