@@ -23,6 +23,7 @@ format = '([\[$all_status$ahead_behind\]]($style) )'
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
 
 [git_metrics]
+format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
 disabled = false
 
 [cmd_duration]
