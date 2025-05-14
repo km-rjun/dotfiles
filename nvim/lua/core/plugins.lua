@@ -28,7 +28,13 @@ local plugins = {
     -- LSP support
     'neovim/nvim-lspconfig',
     'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim',
+    {
+        'williamboman/mason-lspconfig.nvim',
+        lazy = false,
+        opts = {
+            auto_install = true,
+        },
+    },
 
     -- autocompletion
     'hrsh7th/nvim-cmp',
