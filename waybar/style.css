@@ -68,7 +68,7 @@ window#waybar {
 }
 
 /* When Bluetooth is powered off */
-#bluetooth.off {
+#bluetooth.disabled {
     color: grey;
 }
 
