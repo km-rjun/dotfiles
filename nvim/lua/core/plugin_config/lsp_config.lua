@@ -1,14 +1,15 @@
 require("mason").setup()
 require("mason-lspconfig").setup()
 
-local capabilities = require("cmp_nvim_lsp")
-    .default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities(
+    vim.lsp.protocol.make_client_capabilities()
+)
 
 local signs = {
     { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn",  text = "" },
-    { name = "DiagnosticSignHint",  text = "" },
-    { name = "DiagnosticSignInfo",  text = "" },
+    { name = "DiagnosticSignWarn", text = "" },
+    { name = "DiagnosticSignHint", text = "" },
+    { name = "DiagnosticSignInfo", text = "" },
 }
 
 for _, sign in ipairs(signs) do
@@ -25,7 +26,6 @@ vim.diagnostic.config({
         focusable = true,
         style = "minimal",
         border = "rounded",
-        source = "always",
         header = "",
         prefix = "",
     },
@@ -58,21 +58,10 @@ vim.lsp.config["lua_ls"] = {
     },
 }
 
-vim.lsp.config["rust_analyzer"] = {
-    capabilities = capabilities,
-}
-
-vim.lsp.config["jdtls"] = {
-    capabilities = capabilities,
-}
-
-vim.lsp.config["pyright"] = {
-    capabilities = capabilities,
-}
-
-vim.lsp.config["ts_ls"] = {
-    capabilities = capabilities,
-}
+vim.lsp.config["rust_analyzer"] = { capabilities = capabilities }
+vim.lsp.config["jdtls"] = { capabilities = capabilities }
+vim.lsp.config["pyright"] = { capabilities = capabilities }
+vim.lsp.config["ts_ls"] = { capabilities = capabilities }
 
 local servers = {
     "lua_ls",
@@ -81,7 +70,6 @@ local servers = {
     "pyright",
     "ts_ls",
 }
-
 vim.api.nvim_create_autocmd("FileType", {
     group = vim.api.nvim_create_augroup("UserLspAutoStart", {}),
     callback = function()
