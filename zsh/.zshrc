@@ -68,7 +68,6 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias vim='nvim'
-alias cl='clear'
 alias ed='nvim $(fzf --preview="cat {}")'
 alias j="cd \$(dirs -l -p | sed 's#~#$HOME#g' | fzf --height 40% --reverse --preview 'tree -C {} | head -200')"
 eval "$(starship init zsh)"
