@@ -1,11 +1,9 @@
 local opts = { noremap = true, silent = true }
 
 vim.keymap.set("n", "<leader>t", ":nohlsearch<CR>", opts)
-
-vim.keymap.set("n", "<leader>y", '"+y', opts)
-vim.keymap.set("v", "<leader>y", '"+y', opts)
-vim.keymap.set("n", "<leader>Y", '"+Y', opts)
-vim.keymap.set("x", "<leader>p", '"_dP', opts)
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], opts)
+vim.keymap.set("n", "<leader>Y", [["+Y]], opts)
+vim.keymap.set("x", "<leader>p", [["_dP]], opts)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '>-2<CR>gv=gv")
