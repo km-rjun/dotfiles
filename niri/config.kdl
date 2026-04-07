@@ -4,7 +4,7 @@ input {
     keyboard {
         xkb {
         }
-        numlock
+        numlock true
     }
     touchpad {
         // off
@@ -38,6 +38,12 @@ input {
         // middle-emulation
     }
     focus-follows-mouse max-scroll-amount="0%"
+}
+
+gestures {
+    hot-corners {
+        off
+    }
 }
 
 layout {
