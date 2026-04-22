@@ -70,6 +70,7 @@ alias mv='mv -i'
 alias vim='nvim'
 alias ed='nvim $(fzf --preview="cat {}")'
 alias j="cd \$(dirs -l -p | sed 's#~#$HOME#g' | fzf --height 40% --reverse --preview 'tree -C {} | head -200')"
+alias cpf='wl-copy <'
 eval "$(starship init zsh)"
 
 fastfetch -c ~/.config/fastfetch/config.json
