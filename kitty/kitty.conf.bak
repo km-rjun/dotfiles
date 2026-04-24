@@ -1,0 +1,15 @@
+include current-theme.conf
+
+font_family      JetBrainsMono Regular
+bold_font        JetBrainsMono NF Bold
+italic_font      JetBrainsMono NF Italic
+bold_italic_font JetBrainsMono NF Bold Italic
+background_opacity         0.9
+dynamic_background_opacity yes
+font_size 13
+
+enable_audio_bell no
+
+window_padding_width 5
+confirm_os_window_close 0
+
