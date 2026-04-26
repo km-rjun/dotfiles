@@ -143,7 +143,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn-sh "kitty tmux new -As1"; }
     Mod+W hotkey-overlay-title="Open Brave Browser" { spawn-sh "brave --enable-features=TouchpadOverscrollHistoryNavigation --enable-features=UseOzonePlatform --ozone-platform=wayland --dis"; }
-    Mod+Shift+W hotkey-overlay-title="Open Brave Browser in Incognito" { spawn-sh "brave -- incognito --enable-features=TouchpadOverscrollHistoryNavigation --enable-features=UseOzonePlatform --ozone-platform=wayland --dis"; }
+    Mod+Shift+W hotkey-overlay-title="Open Brave Browser in Incognito" { spawn-sh "brave --incognito --enable-features=TouchpadOverscrollHistoryNavigation --enable-features=UseOzonePlatform --ozone-platform=wayland --dis"; }
     Mod+E hotkey-overlay-title="Open a Terminal: kitty" { spawn-sh "pcmanfm"; }
     Mod+D hotkey-overlay-title="Run an Application: wofi" { spawn "wofi"; }
     Mod+Space hotkey-overlay-title="Run Noctalia Application Launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
