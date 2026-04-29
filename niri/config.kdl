@@ -97,7 +97,7 @@ layout {
 // AUTOSTART
 spawn-at-startup "qs" "-c" "noctalia-shell"
 spawn-at-startup "sh -c 'killall kdeconnectd; kdeconnectd'"
-spawn-at-startup "sleep 5 && /usr/lib/xdg-desktop-portal-gtk"
+spawn-at-startup "/usr/lib/xdg-desktop-portal-gtk"
 
 hotkey-overlay {
     skip-at-startup
