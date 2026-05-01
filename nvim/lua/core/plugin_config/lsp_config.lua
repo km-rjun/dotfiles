@@ -1,90 +1,92 @@
-require("mason").setup()
-require("mason-lspconfig").setup()
-
-local capabilities = require("cmp_nvim_lsp").default_capabilities(
-    vim.lsp.protocol.make_client_capabilities()
-)
-
--- Diagnostic signs
-local signs = {
-    { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn",  text = "" },
-    { name = "DiagnosticSignHint",  text = "" },
-    { name = "DiagnosticSignInfo",  text = "" },
-}
-
-for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, {
-        texthl = sign.name,
-        text = sign.text,
-        numhl = "",
-    })
-end
-
 vim.diagnostic.config({
-    virtual_text = true,
-    update_in_insert = true,
-    underline = true,
-    severity_sort = true,
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = "",
+            [vim.diagnostic.severity.WARN]  = "",
+            [vim.diagnostic.severity.HINT]  = "󰠠",
+            [vim.diagnostic.severity.INFO]  = "",
+        },
+    },
+    underline        = true,
+    update_in_insert = false,
+    virtual_text     = { spacing = 4, prefix = "●" },
+    severity_sort    = true,
     float = {
-        border = "rounded",
-        style = "minimal",
+        focusable = false,
+        style     = "minimal",
+        border    = "rounded",
+        source    = "always",
     },
 })
 
--- Rounded borders for hover & signature help
-local function with_border(handler)
-    return function(err, result, ctx, config)
-        config = config or {}
-        config.border = "rounded"
-        return handler(err, result, ctx, config)
-    end
-end
+require("mason-lspconfig").setup({
+    ensure_installed = {
+        "lua_ls", "rust_analyzer", "pyright", "ts_ls",
+        "bashls", "yamlls", "terraformls",
+        "dockerls", "docker_compose_language_service",
+    },
+    automatic_enable = true,  -- auto-calls vim.lsp.enable() for installed servers
+})
 
-vim.lsp.handlers["textDocument/hover"] =
-    with_border(vim.lsp.handlers["textDocument/hover"])
-vim.lsp.handlers["textDocument/signatureHelp"] =
-    with_border(vim.lsp.handlers["textDocument/signatureHelp"])
+-- on_attach keymaps via LspAttach autocmd
+vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("UserLspAttach", { clear = true }),
+    callback = function(event)
+        local map = function(keys, func, desc)
+            vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+        end
+        map("gd",         vim.lsp.buf.definition,      "Go to Definition")
+        map("gD",         vim.lsp.buf.declaration,     "Go to Declaration")
+        map("gr",         vim.lsp.buf.references,      "Go to References")
+        map("gI",         vim.lsp.buf.implementation,  "Go to Implementation")
+        map("K",          vim.lsp.buf.hover,           "Hover Documentation")
+        map("<leader>rn", vim.lsp.buf.rename,          "Rename Symbol")
+        map("<leader>ca", vim.lsp.buf.code_action,     "Code Action")
+        map("<leader>D",  vim.lsp.buf.type_definition, "Type Definition")
+        map("<leader>f",  function()
+            vim.lsp.buf.format({ async = true })
+        end, "Format Buffer")
+    end,
+})
 
--- LSP server configs
-vim.lsp.config.lua_ls = {
+-- Capabilities from blink.cmp
+local capabilities = require("blink.cmp").get_lsp_capabilities()
+
+-- Servers needing custom config (lua_ls and yamlls)
+-- All others are handled automatically by mason-lspconfig automatic_enable
+vim.lsp.config("lua_ls", {
     capabilities = capabilities,
     settings = {
         Lua = {
+            runtime     = { version = "LuaJIT" },
             diagnostics = { globals = { "vim" } },
-            workspace = {
-                library = {
-                    [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                    [vim.fn.stdpath("config") .. "/lua"] = true,
+            workspace   = {
+                library         = vim.api.nvim_get_runtime_file("", true),
+                checkThirdParty = false,
+            },
+            telemetry   = { enable = false },
+        },
+    },
+})
+
+vim.lsp.config("yamlls", {
+    capabilities = capabilities,
+    settings = {
+        yaml = {
+            keyOrdering = false,
+            format      = { enable = true },
+            validate    = true,
+            schemaStore = { enable = false, url = "" },
+            schemas = {
+                kubernetes = {
+                    "*.k8s.yaml", "*.k8s.yml",
+                    "deployment.yaml", "service.yaml",
+                    "configmap.yaml", "ingress.yaml",
+                },
+                ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = {
+                    "docker-compose*.yml", "docker-compose*.yaml",
                 },
             },
         },
     },
-}
-
-vim.lsp.config.rust_analyzer = { capabilities = capabilities }
-vim.lsp.config.jdtls         = { capabilities = capabilities }
-vim.lsp.config.pyright       = { capabilities = capabilities }
-vim.lsp.config.ts_ls         = { capabilities = capabilities }
-
--- Keymaps on attach
-vim.api.nvim_create_autocmd("LspAttach", {
-    group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-    callback = function(ev)
-        vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
-        local opts = { buffer = ev.buf }
-
-        vim.keymap.set("n", "<space>gD", vim.lsp.buf.declaration, opts)
-        vim.keymap.set("n", "<space>gd", vim.lsp.buf.definition, opts)
-        vim.keymap.set("n", "<space>K",  vim.lsp.buf.hover, opts)
-        vim.keymap.set("n", "<space>gi", vim.lsp.buf.implementation, opts)
-        vim.keymap.set("n", "<space>D",  vim.lsp.buf.type_definition, opts)
-        vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
-        vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
-        vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-        vim.keymap.set("n", "<space>f", function()
-            vim.lsp.buf.format({ async = true })
-        end, opts)
-    end,
 })
-
