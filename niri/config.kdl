@@ -132,7 +132,7 @@ layer-rule {
 }
 
 debug {
-    honor-xdg-activation-with-invalid-serial  
+    honor-xdg-activation-with-invalid-serial
 }
 
 window-rule {
@@ -147,6 +147,7 @@ binds {
     Mod+Shift+W hotkey-overlay-title="Open Brave Browser in Incognito" { spawn-sh "brave --incognito --enable-features=TouchpadOverscrollHistoryNavigation --enable-features=UseOzonePlatform --ozone-platform=wayland --dis"; }
     Mod+E hotkey-overlay-title="Open a Terminal: kitty" { spawn-sh "pcmanfm"; }
     Mod+D hotkey-overlay-title="Run an Application: wofi" { spawn "wofi"; }
+    Mod+V hotkey-overlay-title="Toggle clipboard manager" { spawn-sh "qs -c noctalia-shell ipc call plugin:clipper toggle"; }
     Mod+Space hotkey-overlay-title="Run Noctalia Application Launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
     Mod+Backspace { spawn "wlogout"; }
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
@@ -265,8 +266,8 @@ binds {
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
 
-    Mod+V       { toggle-window-floating; }
-    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+    Mod+T       { toggle-window-floating; }
+    Mod+Shift+T { switch-focus-between-floating-and-tiling; }
 
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
