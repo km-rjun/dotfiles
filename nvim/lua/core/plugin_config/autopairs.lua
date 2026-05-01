@@ -18,3 +18,5 @@ require("nvim-autopairs").setup({
         highlight_grey    = 'Comment',
     },
 })
+
+-- blink.cmp has its own autopairs integration, no cmp event hook needed

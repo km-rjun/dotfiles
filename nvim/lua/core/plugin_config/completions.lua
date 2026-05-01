@@ -1,119 +1,93 @@
-local cmp = require("cmp")
-local luasnip = require("luasnip")
-require("luasnip.loaders.from_vscode").lazy_load()
-
-local check_backspace = function()
-local col = vim.fn.col "." - 1
-return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
-end
-
 local kind_icons = {
-  Text = "󰉿",
-	Method = "󰆧",
-	Function = "󰊕",
-	Constructor = "",
-  Field = " ",
-	Variable = "󰀫",
-	Class = "󰠱",
-	Interface = "",
-	Module = "",
-	Property = "󰜢",
-	Unit = "󰑭",
-	Value = "󰎠",
-	Enum = "",
-	Keyword = "󰌋",
-  Snippet = "",
-	Color = "󰏘",
-	File = "󰈙",
-  Reference = "",
-	Folder = "󰉋",
-	EnumMember = "",
-	Constant = "󰏿",
-  Struct = "",
-	Event = "",
-	Operator = "󰆕",
-  TypeParameter = " ",
-	Misc = " ",
+    Text          = "󰉿",
+    Method        = "󰆧",
+    Function      = "󰊕",
+    Constructor   = "",
+    Field         = " ",
+    Variable      = "󰀫",
+    Class         = "󰠱",
+    Interface     = "",
+    Module        = "",
+    Property      = "󰜢",
+    Unit          = "󰑭",
+    Value         = "󰎠",
+    Enum          = "",
+    Keyword       = "󰌋",
+    Snippet       = "",
+    Color         = "󰏘",
+    File          = "󰈙",
+    Reference     = "",
+    Folder        = "󰉋",
+    EnumMember    = "",
+    Constant      = "󰏿",
+    Struct        = "",
+    Event         = "",
+    Operator      = "󰆕",
+    TypeParameter = " ",
 }
--- find more here: https://www.nerdfonts.com/cheat-sheet
 
-cmp.setup {
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body) -- For `luasnip` users.
-    end,
-  },
-  mapping = {
-    ["<C-k>"] = cmp.mapping.select_prev_item(),
-	["<C-j>"] = cmp.mapping.select_next_item(),
-    ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-    ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-    ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-    ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-    ["<C-e>"] = cmp.mapping {
-      i = cmp.mapping.abort(),
-      c = cmp.mapping.close(),
+require("blink.cmp").setup({
+    -- Use stable v1 release
+    -- Keymaps matching your original nvim-cmp layout
+    keymap = {
+        preset        = 'none',
+        ['<C-Space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+        ['<C-e>']     = { 'cancel', 'fallback' },
+        ['<CR>']      = { 'accept', 'fallback' },
+        ['<C-k>']     = { 'select_prev', 'fallback' },
+        ['<C-j>']     = { 'select_next', 'fallback' },
+        ['<C-b>']     = { 'scroll_documentation_up', 'fallback' },
+        ['<C-f>']     = { 'scroll_documentation_down', 'fallback' },
+        ['<Tab>']     = { 'snippet_forward', 'select_next', 'fallback' },
+        ['<S-Tab>']   = { 'snippet_backward', 'select_prev', 'fallback' },
     },
-    -- Accept currently selected item. If none selected, `select` first item.
-    -- Set `select` to `false` to only confirm explicitly selected items.
-    ["<CR>"] = cmp.mapping.confirm { select = true },
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expandable() then
-        luasnip.expand()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      elseif check_backspace() then
-        fallback()
-      else
-        fallback()
-      end
-    end, {
-      "i",
-      "s",
-    }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, {
-      "i",
-      "s",
-    }),
-  },
-  formatting = {
-    fields = { "kind", "abbr", "menu" },
-    format = function(entry, vim_item)
-      -- Kind icons
-      vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-      -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-      vim_item.menu = ({
-        nvim_lsp = "[LSP]",
-        luasnip = "[Snippet]",
-        buffer = "[Buffer]",
-        path = "[Path]",
-      })[entry.source.name]
-      return vim_item
-    end,
-  },
-  sources = {
-    { name = "nvim_lsp" },
-    { name = "luasnip" },
-    { name = "buffer" },
-    { name = "path" },
-  },
-  confirm_opts = {
-    behavior = cmp.ConfirmBehavior.Replace,
-    select = false,
-  },
-  window = {
-    documentation = {
-      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+
+    appearance = {
+        use_nvim_cmp_as_default = true,  -- makes menu look like nvim-cmp
+        nerd_font_variant       = "mono",
     },
-  },
-  }
+
+    completion = {
+        documentation = {
+            auto_show          = true,
+            auto_show_delay_ms = 200,
+            window = {
+                border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+            },
+        },
+        menu = {
+            border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+            draw   = {
+                columns   = { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "source_name" } },
+                components = {
+                    kind_icon = {
+                        text = function(ctx)
+                            return (kind_icons[ctx.kind] or "") .. " "
+                        end,
+                    },
+                    source_name = {
+                        text = function(ctx)
+                            local labels = {
+                                lsp      = "[LSP]",
+                                buffer   = "[Buffer]",
+                                path     = "[Path]",
+                                snippets = "[Snippet]",
+                            }
+                            return labels[ctx.source_name] or ("[" .. ctx.source_name .. "]")
+                        end,
+                    },
+                },
+            },
+        },
+    },
+
+    sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+    },
+
+    snippets = { preset = "default" },
+
+    fuzzy = { implementation = "prefer_rust_with_warning" },
+
+    signature = { enabled = true },
+})
