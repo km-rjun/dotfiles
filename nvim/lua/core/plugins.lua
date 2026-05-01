@@ -78,12 +78,10 @@ local plugins = {
     -- ── Indent / scope lines ─────────────────────────────────────────────
     {
         'lukas-reineke/indent-blankline.nvim',
-        main         = 'ibl',
-        event        = buf_events,
-        dependencies = { 'HiPhish/rainbow-delimiters.nvim' },
-        config       = function() require("core.plugin_config.ibl") end,
+        main   = 'ibl',
+        event  = buf_events,
+        config = function() require("core.plugin_config.ibl") end,
     },
-    { 'HiPhish/rainbow-delimiters.nvim', lazy = true },
 
     -- ── Which-key ────────────────────────────────────────────────────────
     {
