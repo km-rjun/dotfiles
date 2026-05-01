@@ -1,23 +1,25 @@
-require("bufferline").setup{
+require("bufferline").setup({
     options = {
+        mode              = "buffers",
+        separator_style   = "slant",
+        always_show_bufferline = true,
+        show_buffer_close_icons = true,
+        show_close_icon   = false,
+        color_icons       = true,
+        diagnostics       = "nvim_lsp",
+        diagnostics_indicator = function(_, _, diag)
+            local icons = { error = " ", warning = " " }
+            local ret = (diag.error and icons.error .. diag.error .. " " or "")
+                     .. (diag.warning and icons.warning .. diag.warning or "")
+            return vim.trim(ret)
+        end,
         offsets = {
             {
-                filetype = "NvimTree",
-                text = function()
-                    return vim.fn.getcwd()
-                end,
-                highlight = "Directory",
-                text_align = "left"
-            }
+                filetype   = "neo-tree",
+                text       = "File Explorer",
+                highlight  = "Directory",
+                separator  = true,
+            },
         },
-        diagnostics_indicator = function(count, level)
-            local icon = level:match("error") and " " or ""
-            return " " .. icon .. count
-        end,
-        hover = {
-            enabled = true,
-            delay = 200,
-            reveal = {'close'}
-        }
     },
-}
+})
