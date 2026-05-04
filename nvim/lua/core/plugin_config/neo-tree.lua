@@ -8,7 +8,8 @@ require("neo-tree").setup({
     enable_diagnostics   = true,
 
     window = {
-        width    = 35,
+        width    = 50,
+        position = "right",
         mappings = {
             ["<space>"] = "none",
         },
@@ -48,5 +49,3 @@ require("neo-tree").setup({
         },
     },
 })
--- Keymaps are defined in plugins.lua via the keys = {} spec so neo-tree
--- lazy-loads only when you actually press one of them
