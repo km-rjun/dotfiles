@@ -8,7 +8,7 @@ require("neo-tree").setup({
     enable_diagnostics   = true,
 
     window = {
-        width    = 50,
+        width    = 40,
         position = "right",
         mappings = {
             ["<space>"] = "none",
