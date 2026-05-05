@@ -3,7 +3,7 @@ require("lualine").setup({
 		icons_enabled = true,
 		theme = "catppuccin-mocha",
 		component_separators = { left = "", right = "" },
-		section_separators = { left = "", right = "" },
+		section_separators = { left = "", right = "" },
 		globalstatus = true,
 	},
 	sections = {
