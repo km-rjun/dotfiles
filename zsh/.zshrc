@@ -13,6 +13,7 @@ HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
+setopt HIST_IGNORE_DUPS
 bindkey -e
 
 source <(fzf --zsh)
@@ -62,7 +63,7 @@ if [ -f ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 fi
 
 # ALIASES #
-alias ls='ls --color=auto'
+alias ls='ls --group-directories-first --color=auto'
 alias grep='grep --color'
 alias rm='rm -i'
 alias cp='cp -i'
