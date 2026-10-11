@@ -75,3 +75,4 @@ alias cpf='wl-copy <'
 eval "$(starship init zsh)"
 
 fastfetch -c ~/.config/fastfetch/config.json
+export PATH="$HOME/.local/bin:$PATH"
