@@ -24,7 +24,7 @@ hl.bind(mainMod .. " + SHIFT + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
 
 hl.bind("SUPER + Backspace",       hl.dsp.exec_cmd("wlogout"))
-hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("hyprlock"))
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("noctalia msg session lock"))
 
 hl.bind(mainMod .. " + V",         hl.dsp.exec_cmd("qs -c noctalia-shell ipc call plugin:clipper toggle"))
 hl.bind(mainMod .. " + SHIFT + J", hl.dsp.exec_cmd('pkill -f "qs.*noctalia" ; qs -c noctalia-shell &'))
