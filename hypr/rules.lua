@@ -51,3 +51,17 @@ hl.layer_rule({
     blur         = true,
     ignore_alpha = 0.5,
 })
+
+-- Keep Noctalia's own bar/panels visually consistent with the rest of the
+-- blur theme (namespaces confirmed live via `hyprctl layers -j`).
+hl.layer_rule({
+    name  = "noctalia-bar-blur",
+    match = { namespace = "noctalia-bar-default" },
+    blur  = true,
+})
+
+hl.layer_rule({
+    name  = "noctalia-panel-blur",
+    match = { namespace = "noctalia-attached-panel" },
+    blur  = true,
+})
