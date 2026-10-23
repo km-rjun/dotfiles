@@ -6,11 +6,9 @@ hl.config({
         gaps_out    = 6,
         border_size = 1,
 
-        col = {
-            active_border   = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
-            inactive_border = "rgba(595959aa)",
-        },
-
+        -- Border colors are owned by noctalia.lua (applied after this file
+        -- loads, via Noctalia's generated theme) — don't set general.col here,
+        -- it would just get overwritten.
         layout = "dwindle",
     },
 
