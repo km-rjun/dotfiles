@@ -26,8 +26,8 @@ hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind("SUPER + Backspace",       hl.dsp.exec_cmd("wlogout"))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("noctalia msg session lock"))
 
-hl.bind(mainMod .. " + V",         hl.dsp.exec_cmd("qs -c noctalia-shell ipc call plugin:clipper toggle"))
-hl.bind(mainMod .. " + SHIFT + J", hl.dsp.exec_cmd('pkill -f "qs.*noctalia" ; qs -c noctalia-shell &'))
+hl.bind(mainMod .. " + V",         hl.dsp.exec_cmd("noctalia msg panel-toggle clipboard"))
+hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("pkill -x noctalia ; noctalia &"))
 
 hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("killall hyprpaper ; hyprpaper &"))
 
@@ -35,8 +35,10 @@ hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("killall hyprpaper ; hyprpape
 -- SCREENSHOTS
 -- =========================
 
-hl.bind(mainMod .. " + P",         hl.dsp.exec_cmd('grim "$HOME/Pictures/Screenshots/"$(date \'+%y%m%d_%H-%M-%S\').png'))
-hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd('grim -g "$(slurp)" "$HOME/Pictures/Screenshots/"$(date \'+%y%m%d_%H-%M-%S\').png'))
+-- mkdir -p guards the target dir (not guaranteed to exist), and each shot is
+-- also piped to wl-copy so it lands on the clipboard, not just on disk.
+hl.bind(mainMod .. " + P",         hl.dsp.exec_cmd('mkdir -p "$HOME/Pictures/Screenshots" && f="$HOME/Pictures/Screenshots/$(date \'+%y%m%d_%H-%M-%S\').png" && grim "$f" && wl-copy < "$f"'))
+hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd('mkdir -p "$HOME/Pictures/Screenshots" && f="$HOME/Pictures/Screenshots/$(date \'+%y%m%d_%H-%M-%S\').png" && grim -g "$(slurp)" "$f" && wl-copy < "$f"'))
 
 -- =========================
 -- WINDOW MOVEMENT (focus)
@@ -51,6 +53,27 @@ hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + j", hl.dsp.focus({ direction = "down" }))
 hl.bind(mainMod .. " + k", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + l", hl.dsp.focus({ direction = "right" }))
+
+-- =========================
+-- WINDOW MOVEMENT (move the window itself, not just focus)
+-- =========================
+
+hl.bind(mainMod .. " + SHIFT + left",  hl.dsp.window.move({ direction = "left" }))
+hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ direction = "right" }))
+hl.bind(mainMod .. " + SHIFT + up",    hl.dsp.window.move({ direction = "up" }))
+hl.bind(mainMod .. " + SHIFT + down",  hl.dsp.window.move({ direction = "down" }))
+
+hl.bind(mainMod .. " + SHIFT + h", hl.dsp.window.move({ direction = "left" }))
+hl.bind(mainMod .. " + SHIFT + j", hl.dsp.window.move({ direction = "down" }))
+hl.bind(mainMod .. " + SHIFT + k", hl.dsp.window.move({ direction = "up" }))
+hl.bind(mainMod .. " + SHIFT + l", hl.dsp.window.move({ direction = "right" }))
+
+-- =========================
+-- WINDOW CYCLING
+-- =========================
+
+hl.bind(mainMod .. " + Tab",         hl.dsp.window.cycle_next({ next = true }))
+hl.bind(mainMod .. " + SHIFT + Tab", hl.dsp.window.cycle_next({ next = false }))
 
 -- =========================
 -- RESIZE
