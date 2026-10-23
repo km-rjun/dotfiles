@@ -4,6 +4,7 @@
 
 hl.on("hyprland.start", function()
     hl.dispatch(hl.dsp.exec_cmd("noctalia"))
+    hl.dispatch(hl.dsp.exec_cmd("hypridle"))
     hl.dispatch(hl.dsp.exec_cmd("sleep 60 && slack -su"))
     hl.dispatch(hl.dsp.exec_cmd("~/.config/hypr/xdg-portal-hyprland"))
     hl.dispatch(hl.dsp.exec_cmd("mpd"))
