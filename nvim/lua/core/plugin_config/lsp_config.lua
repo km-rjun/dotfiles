@@ -63,7 +63,10 @@ vim.lsp.config("lua_ls", {
 			runtime = { version = "LuaJIT" },
 			diagnostics = { globals = { "vim" } },
 			workspace = {
-				library = vim.api.nvim_get_runtime_file("", true),
+				library = {
+					vim.env.VIMRUNTIME,
+					vim.api.nvim_get_runtime_file("lua/lspconfig", false)[1],
+				},
 				checkThirdParty = false,
 			},
 			telemetry = { enable = false },
