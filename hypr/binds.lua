@@ -53,21 +53,14 @@ hl.bind(mainMod .. " + k", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + l", hl.dsp.focus({ direction = "right" }))
 
 -- =========================
--- RESIZE SUBMAP
+-- RESIZE
 -- =========================
--- QoL: replaces 4 always-on repeating binds with a submap.
--- SUPER+R enters resize mode; Y/O/I/U resize; Escape/Return exits.
+-- SUPER+Y/O/I/U resize the active window directly, no submap/mode needed.
 
-hl.define_submap("resize", function()
-    hl.bind("Y", hl.dsp.window.resize({ x = -50, y = 0 }),  { repeating = true })
-    hl.bind("O", hl.dsp.window.resize({ x = 50,  y = 0 }),  { repeating = true })
-    hl.bind("I", hl.dsp.window.resize({ x = 0,   y = -50 }), { repeating = true })
-    hl.bind("U", hl.dsp.window.resize({ x = 0,   y = 50 }),  { repeating = true })
-    hl.bind("Escape", hl.dsp.submap("default"))
-    hl.bind("Return", hl.dsp.submap("default"))
-end)
-
-hl.bind(mainMod .. " + R", hl.dsp.submap("resize"))
+hl.bind(mainMod .. " + Y", hl.dsp.window.resize({ x = -50, y = 0,   relative = true }), { repeating = true })
+hl.bind(mainMod .. " + O", hl.dsp.window.resize({ x = 50,  y = 0,   relative = true }), { repeating = true })
+hl.bind(mainMod .. " + I", hl.dsp.window.resize({ x = 0,   y = -50, relative = true }), { repeating = true })
+hl.bind(mainMod .. " + U", hl.dsp.window.resize({ x = 0,   y = 50,  relative = true }), { repeating = true })
 
 -- =========================
 -- WORKSPACES
