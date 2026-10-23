@@ -1,5 +1,4 @@
 -- look.lua — general, decoration, animations, dwindle layout
--- See https://wiki.hypr.land/Configuring/Variables/
 
 hl.config({
     general = {
@@ -24,7 +23,7 @@ hl.config({
             enabled           = true,
             size              = 6,
             passes            = 3,
-            new_optimizations = true, -- verify still valid on the wiki Variables page for 0.55+
+            new_optimizations = true,
         },
     },
 
