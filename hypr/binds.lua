@@ -15,6 +15,7 @@ hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("brave --incognito --enable-f
 
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("pcmanfm"))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("wofi"))
+hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("noctalia msg panel-toggle launcher"))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd('mailspring --password-store="gnome-libsecret"'))
 hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("slack"))
 
