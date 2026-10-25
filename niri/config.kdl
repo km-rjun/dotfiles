@@ -95,7 +95,8 @@ layout {
 }
 
 // AUTOSTART
-spawn-at-startup "qs" "-c" "noctalia-shell"
+spawn-at-startup "noctalia"
+spawn-at-startup "hypridle"
 spawn-at-startup "sh -c 'killall kdeconnectd; kdeconnectd'"
 spawn-at-startup "/usr/lib/xdg-desktop-portal-gtk"
 
@@ -143,12 +144,12 @@ window-rule {
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn-sh "kitty tmux new -As1"; }
-    Mod+W hotkey-overlay-title="Open Brave Browser" { spawn-sh "brave --enable-features=TouchpadOverscrollHistoryNavigation --enable-features=UseOzonePlatform --ozone-platform=wayland --dis"; }
-    Mod+Shift+W hotkey-overlay-title="Open Brave Browser in Incognito" { spawn-sh "brave --incognito --enable-features=TouchpadOverscrollHistoryNavigation --enable-features=UseOzonePlatform --ozone-platform=wayland --dis"; }
+    Mod+W hotkey-overlay-title="Open Brave Browser" { spawn-sh "brave --enable-features=TouchpadOverscrollHistoryNavigation --disable-experiments --password-store=gnome"; }
+    Mod+Shift+W hotkey-overlay-title="Open Brave Browser in Incognito" { spawn-sh "brave --incognito --enable-features=TouchpadOverscrollHistoryNavigation --disable-experiments"; }
     Mod+E hotkey-overlay-title="Open a Terminal: kitty" { spawn-sh "pcmanfm"; }
     Mod+D hotkey-overlay-title="Run an Application: wofi" { spawn "wofi"; }
-    Mod+V hotkey-overlay-title="Toggle clipboard manager" { spawn-sh "qs -c noctalia-shell ipc call plugin:clipper toggle"; }
-    Mod+Space hotkey-overlay-title="Run Noctalia Application Launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    Mod+V hotkey-overlay-title="Toggle clipboard manager" { spawn-sh "noctalia msg panel-toggle clipboard"; }
+    Mod+Space hotkey-overlay-title="Run Noctalia Application Launcher" { spawn-sh "noctalia msg panel-toggle launcher"; }
     Mod+Backspace { spawn "wlogout"; }
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
