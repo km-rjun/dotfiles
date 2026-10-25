@@ -7,7 +7,11 @@ bindkey "^[[1;5C" forward-word
 # zstyle :compinstall filename '/home/rjun/.zshrc'
 autoload -Uz compinit
 setopt PROMPT_SUBST
-compinit
+
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
 zstyle ':completion:*' menu select
 HISTFILE=~/.histfile
 HISTSIZE=10000
@@ -72,7 +76,9 @@ alias vim='nvim'
 alias ed='nvim $(fzf --preview="cat {}")'
 alias j="cd \$(dirs -l -p | sed 's#~#$HOME#g' | fzf --height 40% --reverse --preview 'tree -C {} | head -200')"
 alias cpf='wl-copy <'
+export EDITOR='nvim'
+export VISUAL='nvim'
 eval "$(starship init zsh)"
 
-fastfetch -c ~/.config/fastfetch/config.json
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
